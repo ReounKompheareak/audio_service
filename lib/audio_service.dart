@@ -1546,7 +1546,8 @@ class AudioServiceBackground {
       // We potentially need to fetch the art.
       String filePath = _getLocalPath(mediaItem.artUri);
       if (filePath == null) {
-        final fileInfo = _cacheManager.getFileFromMemory(mediaItem.artUri);
+        FileInfo fileInfo =
+            await _cacheManager.getFileFromMemory(mediaItem.artUri);
         filePath = fileInfo?.file?.path;
         if (filePath == null) {
           // We haven't fetched the art yet, so show the metadata now, and again
